@@ -2,7 +2,13 @@
 
 This fork is the public source and bundle catalog for ABUZ8's click-to-run OpenClaw desktop builds.
 
-## Verified Windows bundles
+## Release status
+
+**No binary release is published yet.** The repository is intentionally source
+and catalog only until a clean staged payload passes the one-click acceptance
+gate in `docs/ABUZ8_BUILD_AND_RELEASE.md`.
+
+## Verified Windows bundle sources
 
 | Label | Provider base | Bundle location | Runtime |
 | --- | --- | --- | --- |
@@ -16,23 +22,27 @@ bundles. They are not required at runtime after a release package is assembled.
 
 ## Product contract
 
-The GUI-complete releases currently verified are `ABUZ8 Sovereign` and `ABUZ8
-OPC-1`. The `OpenClaw Portable` launcher is functional but currently opens the
-chat terminal after starting its local brain; it does not yet meet the
-no-terminal desktop requirement.
+The GUI-complete source candidates are `ABUZ8 Sovereign` and `ABUZ8 OPC-1`. The
+OpenClaw Portable launcher is excluded because it opens a terminal. The current
+OpenClaw Desktop staging tree also contains a SQLite WAL in its bundled home;
+that user state must be removed and replaced with a fresh profile before release.
 
-Each finished Windows release is intended to be:
+Each finished Windows release must be:
 
 - launched by double-clicking one installer or portable executable;
 - self-contained, with its own runtime, engine, backend, frontend, and state;
 - isolated from the owner's live OpenClaw gateway and credentials;
 - usable without Node, Python, Git, or terminal setup on the target machine.
 
-## Current gap
+## Current gaps
 
 The portable OpenClaw launcher still uses `runtime\node\node.exe` to start the
 chat terminal. It must be replaced by, or chained into, the bundled Electron
-desktop shell before that build is advertised as a GUI-only release.
+desktop shell before that build is eligible.
+
+The OpenClaw Desktop candidate needs a clean-profile rebuild and a clean-machine
+test covering onboarding, provider/model selection, memory persistence, tools,
+skills, voice/vision settings, GPU allocation, and upstream update controls.
 
 ## What is not committed
 
