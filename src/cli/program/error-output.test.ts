@@ -1,6 +1,7 @@
 // Error output tests cover program-level error display and exit messaging.
 import { CommanderError, InvalidArgumentError } from "commander";
 import { describe, expect, it } from "vitest";
+import { isConfigMachineOutput } from "../config-output-mode.js";
 import { createCronOutputCommand, isCronMachineOutput } from "../cron-cli/output-mode.js";
 import { isDevicesMachineOutput } from "../devices-output-mode.js";
 import { ExpectedCliError, formatCliJsonFailure } from "../failure-output.js";
@@ -114,6 +115,24 @@ describe("formatCliParseErrorOutput", () => {
       argument: "<ref>",
       message: 'Missing required argument "ref".',
       machineOutput: isSkillsMachineOutput,
+    },
+    {
+      name: "skill verification after a parent terminator",
+      args: ["skills", "--", "verify"],
+      root: "skills",
+      children: ["verify"],
+      argument: "<ref>",
+      message: 'Missing required argument "ref".',
+      machineOutput: isSkillsMachineOutput,
+    },
+    {
+      name: "config read after a parent terminator",
+      args: ["config", "--", "get"],
+      root: "config",
+      children: ["get"],
+      argument: "<path>",
+      message: 'Missing required argument "path".',
+      machineOutput: isConfigMachineOutput,
     },
     {
       name: "node invocation",
