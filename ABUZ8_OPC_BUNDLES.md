@@ -8,24 +8,28 @@ This fork is the public source and bundle catalog for ABUZ8's click-to-run OpenC
 and catalog only until a clean staged payload passes the one-click acceptance
 gate in `docs/ABUZ8_BUILD_AND_RELEASE.md`.
 
-## Verified Windows bundle sources
+## Source-backed candidates (not released)
 
 | Label | Provider base | Bundle location | Runtime |
 | --- | --- | --- | --- |
-| ABUZ8 Sovereign | OpenClaw v3.13 fork | `G:\ABUZ8 opecla-Sovereign-9B\ABUZ8_SOVEREIGN` | Embedded Node, Electron shell, llama-server, local model, portable `home` |
-| OpenClaw Portable | OpenClaw 2026.6.8 | `G:\ABUZ8-Agents\OpenClaw-Portable` | Embedded runtime, gateway, brain, skills, portable state |
-| ABUZ8 OPC-1 | OpenClaw 2026.9.1 | `C:\ABUZ8-Agents\ABUZ8-OPC-1` | Native Windows Electron shell, gateway, local model services, isolated state |
-| OpenClaw Desktop | ABUZ8 desktop source | `E:\ABU\02_PROJECTS\OPENCLAW_DESKTOP` | Electron shell with bundled runtime, engine, gateway, and portable home |
+| ABUZ8 OPC-1 / OpenClaw Desktop | ABUZ8 desktop source | `E:\ABU\02_PROJECTS\OPENCLAW_DESKTOP` | Electron shell, gateway, engine integration, skills, model catalog, and portable home |
 
-The paths above are the verified owner-machine locations used to build and test the
-bundles. They are not required at runtime after a release package is assembled.
+The following trial payloads are deliberately excluded from publication because
+they embed model weights or still depend on terminal launchers:
+
+- ABUZ8 Sovereign v3.13;
+- OpenClaw Portable;
+- the self-extracting model bundles on `E:`.
+
+The path above is the owner-machine source used for staging. It is not a
+downloadable release until a clean profile is generated and the acceptance gate
+passes.
 
 ## Product contract
 
-The GUI-complete source candidates are `ABUZ8 Sovereign` and `ABUZ8 OPC-1`. The
-OpenClaw Portable launcher is excluded because it opens a terminal. The current
-OpenClaw Desktop staging tree also contains a SQLite WAL in its bundled home;
-that user state must be removed and replaced with a fresh profile before release.
+The current OpenClaw Desktop staging tree contains a SQLite WAL in its bundled
+home. That user state must be removed and replaced with a fresh profile before
+release.
 
 Each finished Windows release must be:
 
@@ -35,10 +39,6 @@ Each finished Windows release must be:
 - usable without Node, Python, Git, or terminal setup on the target machine.
 
 ## Current gaps
-
-The portable OpenClaw launcher still uses `runtime\node\node.exe` to start the
-chat terminal. It must be replaced by, or chained into, the bundled Electron
-desktop shell before that build is eligible.
 
 The OpenClaw Desktop candidate needs a clean-profile rebuild and a clean-machine
 test covering onboarding, provider/model selection, memory persistence, tools,
