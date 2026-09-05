@@ -4,9 +4,11 @@ This fork is the public source and bundle catalog for ABUZ8's click-to-run OpenC
 
 ## Release status
 
-**No binary release is published yet.** The repository is intentionally source
-and catalog only until a clean staged payload passes the one-click acceptance
-gate in `docs/ABUZ8_BUILD_AND_RELEASE.md`.
+**Windows x64 acceptance prerelease published:** [ABUZ8 OPC-1
+1.0.0](https://github.com/abuz8studios-ship-it/abuz8-opc-bundles/releases/tag/v1.0.0-abuz8-win1).
+SHA256:
+`D7BC65D53256CD1B69AB8E20C703BFF96B2FA09DB153BF695714902D667DD8B8`.
+The release contains no embedded GGUF model weights.
 
 ## Source-backed candidates (not released)
 
@@ -21,15 +23,15 @@ they embed model weights or still depend on terminal launchers:
 - OpenClaw Portable;
 - the self-extracting model bundles on `E:`.
 
-The path above is the owner-machine source used for staging. It is not a
-downloadable release until a clean profile is generated and the acceptance gate
-passes.
+The path above is the owner-machine source used for staging. The published
+prerelease was built with an isolated writable profile; its native window
+launched successfully and the bundle-local gateway reached HTTP 200.
 
 ## Product contract
 
-The current OpenClaw Desktop staging tree contains a SQLite WAL in its bundled
-home. That user state must be removed and replaced with a fresh profile before
-release.
+OpenClaw Desktop stores user state in a writable per-user profile rather than
+inside installed resources. The inference registry follows the same contract as
+Hermes and persists only normalized adapter selections there.
 
 Each finished Windows release must be:
 
