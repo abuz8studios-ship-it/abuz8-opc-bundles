@@ -685,6 +685,7 @@ export class PluginsPage extends OpenClawLightDomElement {
                         canGoNext: this.discovery.canGoNext,
                         result: this.discovery.result,
                         error: this.discovery.error,
+                        remoteError: this.discovery.remoteError,
                         categories: this.discovery.categories,
                         categoriesError: this.discovery.categoriesError,
                         featured: this.discovery.featured,
