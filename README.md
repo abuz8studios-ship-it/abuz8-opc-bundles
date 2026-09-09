@@ -1,3 +1,17 @@
+# OpenClaw Bundled Desktop
+
+This fork is a public release hub for bundled OpenClaw desktop builds. It is not an upstream pull request and it does not publish private operator state, credentials, machine paths, model weights, or live computer access.
+
+Public release rule:
+
+1. Source changes stay in this fork.
+2. User-facing Windows builds are published only as GitHub Release assets after a clean scan.
+3. The release artifact must be a self-contained app bundle or installer that a user can download and run without access to the maintainer's computer.
+
+The current public branch intentionally does not include the private installed-machine OPC-1 runtime. A public one-click EXE/ZIP should be uploaded only after it is rebuilt or staged from a clean profile with no local state, no personal paths, no credentials, and no remote-control bridge to the maintainer's machine.
+
+---
+
 # OpenClaw 🦞 — Your assistant, on your devices, in your chats
 
 <p align="center">
